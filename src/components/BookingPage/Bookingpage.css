@@ -1,0 +1,62 @@
+.main-booking{
+    display: flex;
+    justify-content: space-between;
+}
+.passenger-details{
+    width: 40%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 4%;
+
+}
+.form-container{
+    padding: 10px;
+    margin-left: 100px;
+    align-items: center;
+    
+}.form-container input {
+    width: auto;
+}
+
+#sex{
+    height: 30px;
+    width: 60%;
+    background-color: rgb(137, 85, 153);
+    color: white;
+    font-size: 15px;
+}
+.seats{
+    text-align: center;
+    width: 60%;
+    height: 100vh;
+    background-color: #f8f8f8;
+}
+.p-list{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    background-color: white;
+    border-radius: 10px;
+    height: auto;
+    font-size: 10px;
+    align-items: start;
+    margin: 10px;
+}
+.p-list span{
+    font-weight: bold;
+}
+.p-main-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 3px;
+    margin: 3px;
+}
+.render-seats{
+    align-items: center;
+    margin-left: 60px;
+}
+.render-seats button{
+    margin-left: 60px;
+}
+

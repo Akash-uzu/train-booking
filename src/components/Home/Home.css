@@ -1,0 +1,33 @@
+
+.home{
+    margin-top: 10%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    
+
+}
+.container-home{
+    height: 80%;
+    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+    
+
+.home button{
+    height: 80px;
+    width: 300px;
+    background-color: #674188;
+    border-radius: 20px;
+    border: none;
+    color: #FFFBF5;
+    margin: 50px;
+    font-size: 20px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;}
+button:hover{
+    cursor: pointer;
+    background-color: #402955;
+}

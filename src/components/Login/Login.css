@@ -1,0 +1,58 @@
+.agent-login-main-container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .agent-login-sub-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 37%;
+    padding: 32px 0px 32px 0px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+      rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+      rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  }
+  
+  .login-heading {
+    font-family: "Lucida Sans Unicode";
+    font-weight: 700;
+    color: rgb(68, 14, 70);
+  }
+  .agent-login-form {
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .agent-login-input {
+    width: 100%;
+    margin: 5px;
+    padding: 3px;
+    height: 35px;
+    border: none;
+    border: 1px solid rgb(146, 153, 158);
+    border-radius: 6px;
+  }
+  .login-btn {
+    width: 90px;
+    height: 60px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #674188;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .err {
+    font-family: "Courier New";
+    font-weight: bold;
+    color: rgb(253, 15, 15);
+    font-size: 14px;
+  }
