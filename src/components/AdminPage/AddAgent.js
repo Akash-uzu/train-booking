@@ -41,6 +41,7 @@ const AddAgent = (props) => {
         Username: username,
         Email: email,
         Password: password,
+        isRegistered : false,
       
       };
       let formData = JSON.parse(localStorage.getItem("data")) || [];

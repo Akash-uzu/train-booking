@@ -1,18 +1,18 @@
 .agent-login-main-container {
-    height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: auto;
   }
   .agent-login-sub-container {
-    margin-top: 100px;
+    margin-top: -1px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: auto;
+    width: 37%;
+    padding: 32px 0px 32px 0px;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
@@ -26,7 +26,7 @@
   }
   .agent-login-form {
     display: flex;
-    width: auto;
+    width: 45%;
     flex-direction: column;
     justify-content: center;
     align-items: center;

@@ -1,21 +1,19 @@
 
 .home{
-    margin-top: 10%;
-    height: 80%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
+    background-color: #f3f3f3;
     
 }
 .container-home{
-    margin-left: 400px;
-    width: 40%;
+    width: 100%;
     box-shadow: rgba(85, 58, 134, 0.849) 0px 5px 15px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
    
 
 }
@@ -37,4 +35,11 @@ h2{
 button:hover{
     cursor: pointer;
     background-color: #402955;
+}
+.wrapper{
+    height: 50%;
+    width: 50%;
+}
+img{
+    height: 300px;
 }

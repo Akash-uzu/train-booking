@@ -12,7 +12,7 @@ const Bookingpage = () => {
   const a = parseInt(compartments) * 6;
   const [passengers, setPassengers] = useState([]);
   const [counter, setCounter] = useState(0);
-  const bookedAgent = localStorage.getItem("currentagent");
+  const bookedAgent = JSON.parse(localStorage.getItem("currentagent"));
 
   localStorage.setItem("totalseats", JSON.stringify(a)); /// pass it to seat rendering component
 
@@ -35,6 +35,11 @@ const Bookingpage = () => {
     <div className="main-booking">
       <div className="passenger-details">
         <h3>No of tickets selected by Admin is : {tickets}</h3>
+        <p>
+          1.Enter the passenger details then click add
+        </p>
+        <p>2.Repeat to add more passengers</p>
+        <p>3.Click allocate Seats once you Entered all passengers</p>
         <form className="form-container">
           <h3>Passenger Details</h3>
           <input
@@ -59,7 +64,7 @@ const Bookingpage = () => {
           />
 
           <button type="button" onClick={pList}>
-            add
+            Add
           </button>
         </form>
         <div className="p-main-list">
@@ -81,7 +86,7 @@ const Bookingpage = () => {
         </div>
       </div>
       <div className="seats">
-        <h1>{compartments} - Rows Selected by Admin</h1>
+        <h1> Compartments Selected by Admin : {compartments}</h1>
         <div className="render-seats">
           <Passenger/>
         </div>

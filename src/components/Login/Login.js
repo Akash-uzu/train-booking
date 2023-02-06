@@ -22,8 +22,17 @@ const Login = () => {
        
     } 
     console.log(LoginSuccess)
+
     localStorage.setItem("currentagent", JSON.stringify(LoginSuccess.Username))
-    navigate("/booking");
+
+
+
+    if(LoginSuccess.isRegistered===false){
+      navigate('/register')
+    }else{
+      navigate("/booking");
+
+    }
       
 
     }

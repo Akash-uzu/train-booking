@@ -10,20 +10,28 @@
 .main-booking{
     display: flex;
     justify-content: center;
+    text-align: start;
 }
 .passenger-details{
-    width: auto;
+    width: 50%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
-    text-align: center;
+    text-align: start;
     display: flex;
     flex-direction: column;
-    padding-left: 4%;
+    justify-content: start;
+    align-items: center;
+    color: rgb(56, 56, 56);
 
+}
+.passenger-details p {
+margin: 10px;
+text-align: start;
 }
 .form-container{
     padding: 10px;
-    margin-left: 100px;
+    margin-left: 600px;
+    margin-top: 10px;
     align-items: center;
     
 }.form-container input {
@@ -38,10 +46,14 @@
     font-size: 15px;
 }
 .seats{
-    text-align: center;
-    width: 60%;
+    color: rgb(90, 89, 92);
+    width: auto;
     height: 100vh;
     background-color: #f8f8f8;
+}
+.seats h1{
+    text-align: start;
+    margin-left: 30px;
 }
 .p-list{
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
@@ -51,6 +63,8 @@
     font-size: 10px;
     align-items: start;
     margin: 10px;
+    text-align: center;
+    padding: 10px;
 }
 .p-list span{
     font-weight: bold;
@@ -58,10 +72,11 @@
 .p-main-list{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 3px;
+    padding: px;
     margin: 3px;
 }
 .render-seats{
+    
     align-items: center;
     margin-left: 60px;
 }

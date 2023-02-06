@@ -1,181 +1,170 @@
-import React from "react";
+import React, { useState } from "react";
 //import Seat from "./Seat";
 import RenderSeats from "./SeatsMatrix";
 import "./Passengers.css";
 
 const Passenger = () => {
   const bookedAgent = localStorage.getItem("currentagent");
-  const passengers = JSON.parse(localStorage.getItem("passengerData"));
+  const passengerData = JSON.parse(localStorage.getItem("passengerData"));
   const totalseats = JSON.parse(localStorage.getItem("totalseats"));
-  let seatsData = JSON.parse(localStorage.getItem("seatsData")) || []
-  let seats = []
-  console.log(passengers)
-  if(seatsData.length===0 || null){
-    if (seatsData.length ===0){
-      for (let i = 1; i <= totalseats; i++) {
-        let category =
-          i % 6 === 0 || i % 6 === 5
-            ? "window"
-            : i % 6 === 1 || i % 6 === 4
-            ? "middle"
-            : "aisle";
-        seats =  [
-          ...seats,
-          {
-            seatNo: i,
-            pname: "name",
-            status: "available",
-            category: category,
-            bookedBy: bookedAgent,
-          },
-        ];
-      }
-      localStorage.setItem("seatsData", JSON.stringify(seats));
-    }
-    
+  const [render,setRender] = useState(JSON.parse(localStorage.getItem("seatsData")) || [])
 
+  let seatsData = JSON.parse(localStorage.getItem("seatsData")) || [];
+  let seats = [];
+  if (seatsData.length === 0 || null) {
+    for (let i = 1; i <= totalseats; i++) {
+      let type =
+        (i % 6) - 1 === 0 || i % 6 === 0
+          ? "window"
+          : (i % 6) - 2 === 0 || i % 6 === 5
+          ? "middle"
+          : "aisle";
+      seats = [
+        ...seats,
+        {
+          seatNo: i,
+          pname: "name",
+          status: "available",
+          type: type,
+          bookedBy: null,
+        },
+      ];
+    }
+    localStorage.setItem("seatsData", JSON.stringify(seats));
+    console.log(seats);
+  } else {
+    localStorage.setItem("seatsData", JSON.stringify(seatsData));
+    console.log(seatsData);
   }
 
   const allocateSeats = () => {
+    passengerData.forEach((passenger) => {
 
-    passengers.forEach((passenger) => {
       if (passenger.age >= 60) {
-        let windowSeat = seatsData.find(
-          (seat) => seat.category === "window" && seat.status === "available"
-        );
-        if (windowSeat) {
-          windowSeat.status = "booked";
-          windowSeat.bookedBy = passenger;
-          console.log("ran")
-        } else {
-          let middleSeat = seatsData.find(
-            (seat) => seat.category === "middle" && seat.status === "available"
+        //// All 60+ age condition
+        if (passenger.sex === "female") {
+          // female preference
+          let windowSeat = seatsData.find(
+            (seat) => seat.type === "window" && seat.status === "available"
           );
-          if (middleSeat) {
-            middleSeat.status = "booked";
-            middleSeat.bookedBy = passenger;
+          if (windowSeat) {
+            windowSeat.pname = passenger.name;
+            windowSeat.status = "booked";
+            windowSeat.bookedBy = passenger;
+            console.log("ran");
+          } else {
+            let middleSeat = seatsData.find(
+              (seat) =>
+                seat.type === "middle" && seat.status === "available"
+            );
+            if (middleSeat) {
+              middleSeat.pname = passenger.pname;
+              middleSeat.status = "booked";
+              middleSeat.bookedBy = passenger;
+            }
+          }
+        } else {
+          // male seats
+          let windowSeat = seatsData.find(
+            (seat) => seat.type === "window" && seat.status === "available"
+          );
+          if (windowSeat) {
+            windowSeat.pname = passenger.name;
+            windowSeat.status = "booked";
+            windowSeat.bookedBy = passenger;
+            console.log("ran");
+          } else {
+            let middleSeat = seatsData.find(
+              (seat) =>
+                seat.type === "middle" && seat.status === "available"
+            );
+            if (middleSeat) {
+              middleSeat.pname = passenger.pname;
+              middleSeat.status = "booked";
+              middleSeat.bookedBy = passenger;
+            }
           }
         }
       } else {
-        if (passenger.sex === "female") {
-          console.log("sssssssssssssssssssssss");
-          const windowSeat = seatsData.find(function (seat) {
-            return seat.category === "window" && seat.status === "available";
-          });
-          if (windowSeat) {
-            windowSeat.status = "booked";
-            windowSeat.bookedBy = passenger;
+        /// prefering accordingly, so that 60+ can get window seats and middle seats
+        //  preferences:
+        //  aise 1
+        //  middle 2
+        //  window 3
+        const aisle = seatsData.find(function (seat) {
+          return seat.type === "aisle" && seat.status === "available";
+        });
+        if (aisle) {
+          aisle.pname = passenger.pname;
+          aisle.status = "booked";
+          aisle.bookedBy = passenger;
+        } else {
+          const middle = seatsData.find(
+            (seat) => seat.type === "middle" && seat.status === "available"
+          );
+          if (middle) {
+            middle.pname = passenger.pname;
+            middle.status = "booked";
+            middle.bookedBy = passenger;
           } else {
-            const middleSeat = seatsData.find(
-              (seat) =>
-                seat.category === "middle" && seat.status === "available"
+            // check for any other available seats
+            const availableSeat = seatsData.find(
+              (seat) => seat.status === "available"
             );
-            if (middleSeat) {
-              console.log("femlee");
-              middleSeat.status = "booked";
-              middleSeat.bookedBy = passenger;
+            if (availableSeat) {
+              availableSeat.pname = passenger.pname;
+              availableSeat.status = "booked";
+              availableSeat.bookedBy = passenger;
             } else {
-              const aisleSeat = seatsData.find(
-                (seat) =>
-                  seat.category === "aisle" && seat.status === "available"
-              );
-              if (aisleSeat) {
-                aisleSeat.status = "booked";
-                aisleSeat.bookedBy = passenger;
-              } else {
-                const aisleSeat = seatsData.find(
-                  (seat) =>
-                    seat.category === "aisle" && seat.status === "available"
-                );
-                if (aisleSeat) {
-                  aisleSeat.status = "booked";
-                  aisleSeat.bookedBy = passenger;
-                } else {
-                  // check for any other available seats
-                  const availableSeat = this.seatsData.find(
-                    (seat) => seat.status === "available"
-                  );
-                  if (availableSeat) {
-                    availableSeat.status = "booked";
-                    availableSeat.bookedBy = passenger;
-                  } else {
-                    console.log("No seats available for booking");
-                  }
-                }
-              }
+              alert("seats unavailable");
             }
           }
         }
       }
-    });
-    localStorage.setItem("seatsData",JSON.stringify(seatsData))
-  };
+      
 
-  //   if (age >= 60) {//window seat allocation
-  //     for (let i = 1; i <= totalseats; i++) {
-  //       if (i % 6-1 === 0 || i % 6 === 0) {
-  //         if (!bookedSeats[i]) {
-  //           bookedSeats[i-1] = { age, sex, bookedAgent };
-  //           setSeat(i + 1);
-  //           localStorage.setItem("bookedseats", JSON.stringify(bookedSeats));
-  //           console.log(bookedSeats);
-  //           break;
-  //         }
-  //       }
-  //     }
-  //   } else {// middle seat allocation if no window seat
-  //     for (let i = 1; i <= totalseats; i++) {
-  //       if (i % 6-2 === 0 || i % 6 === 5) {
-  //         if (!bookedSeats[i]) {
-  //           bookedSeats[i] = { age, sex, bookedAgent };
-  //           setSeat(i + 1);
-  //           localStorage.setItem("bookedseats", JSON.stringify(bookedSeats));
-  //           break;
-  //         }
-  //       } else {
-  //         for (let i = 1; i <= totalseats; i++) {
-  //           if (i % 6-3 === 0 || i % 6 === 4) {
-  //             if (!bookedSeats[i]) {
-  //               bookedSeats[i] = { age, sex, bookedAgent };
-  //               setSeat(i + 1);
-  //               localStorage.setItem(
-  //                 "bookedseats",
-  //                 JSON.stringify(bookedSeats)
-  //               );
-  //               break;
-  //             } else {
-  //               if (
-  //                 bookedSeats[i].bookedAgent === bookedAgent &&
-  //                 !(
-  //                   (bookedSeats[i-1] && bookedSeats[i+1].sex !== sex) ||
-  //                   (bookedSeats[i + 1] && bookedSeats[i + 1].sex !== sex)
-  //                 )
-  //               ) {
-  //                 bookedSeats[i + 2] = { age, sex, bookedAgent };
-  //                 setSeat(i + 2);
-  //                 localStorage.setItem(
-  //                   "bookedseats",
-  //                   JSON.stringify(bookedSeats)
-  //                 );
-  //                 break;
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // };
+
+    });
+    //function to check diff gender
+    // localStorage.setItem("seatsData",JSON.stringify(seatsData))
+
+    const checkGender=() => {
+      for (let i = 1; i < seatsData - 1; i++) {
+        if (
+          seatsData[i].bookedBy.bookedAgent !==
+            seatsData[i - 1].bookedBy.bookedAgent ||
+          seatsData[i].bookedBy.bookedAgent !==
+            seatsData[i + 1].bookedBy.bookedAgent
+        ) {
+          if (
+            seatsData[i].bookedBy.sex === seatsData[i - 1].bookedBy.sex ||
+            seatsData[i].bookedBy.sex === seatsData[i + 1].bookedBy.sex
+          ) {
+            return true;
+          }
+        }
+      }
+    }
+    console.log(checkGender())
+    if(checkGender()===true){
+      alert("Warning! Opposite Gender Passengers");
+    }else{
+      localStorage.setItem("seatsData",JSON.stringify(seatsData))
+      setRender(seatsData)
+
+    }
+
+  };
 
   return (
     <div className="totalseats-container">
-      <button onClick={allocateSeats}>Allocate Seat</button>
+     
       <br />
       <br />
-      {/* <Seat seat={seat} /> */}
       <div className="render-seats">
-        <RenderSeats />
+        <RenderSeats render={render} />
       </div>
+      <button onClick={allocateSeats}>Allocate Seat</button>
     </div>
   );
 };
