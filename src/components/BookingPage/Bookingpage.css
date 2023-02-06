@@ -1,9 +1,18 @@
+@media (max-width: 800px) {
+    /* put your css styles in here */
+    .main-booking{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+  }
+
 .main-booking{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .passenger-details{
-    width: 40%;
+    width: auto;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     text-align: center;

@@ -22,7 +22,7 @@ const Login = () => {
        
     } 
     console.log(LoginSuccess)
-    localStorage.setItem("currentagent", LoginSuccess.Username)
+    localStorage.setItem("currentagent", JSON.stringify(LoginSuccess.Username))
     navigate("/booking");
       
 

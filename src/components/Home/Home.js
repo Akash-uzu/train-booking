@@ -14,10 +14,12 @@ const Home = () => {
     }
   return (
         <div className='home'>
+            <h2>
+                Login </h2>
             <div className='container-home'>
             
             <button onClick={adminHandler}>
-                    Super Admin
+                     Admin
                 </button>
 
     

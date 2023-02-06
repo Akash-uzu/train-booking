@@ -1,12 +1,5 @@
-.totalseats-container{
-  margin-left: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;  
-}
+
 .render-seats{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  align-items: center;
 }

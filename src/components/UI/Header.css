@@ -10,6 +10,7 @@
     justify-content: space-around;
 }
 .header button{
+    height: 45px;
     background-color: #472c5f;
 }
 .header button:hover {

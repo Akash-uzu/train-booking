@@ -1,8 +1,10 @@
 import React from "react";
 const RenderSeats = () => {
-  let storedData = JSON.parse(localStorage.getItem("passengerData")) || [];
+  let bookedSeats = JSON.parse(localStorage.getItem("bookedseats")) || [];
   let seats = [];
   let total = localStorage.getItem("totalseats")
+
+  
   for (let i = 0; i < total; i++) {
     seats.push(
         <div
@@ -15,10 +17,10 @@ const RenderSeats = () => {
             textAlign: "center",
             margin: "5px",
             borderRadius: "8px",
-            backgroundColor: storedData[i] ? "lightgreen" : "white"
+            backgroundColor: bookedSeats[i] ? "lightgreen" : "white"
           }}
       >
-        {storedData[i] ? storedData[i].age : i + 1}
+        {bookedSeats[i] ? bookedSeats[i].age : i + 1}
       </div>    );
   }
 
