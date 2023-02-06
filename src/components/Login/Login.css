@@ -1,5 +1,6 @@
 .agent-login-main-container {
     height: 80vh;
+    margin-top:100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +8,7 @@
     width: auto;
   }
   .agent-login-sub-container {
-    margin-top: 100px;
+    margin-top:100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
