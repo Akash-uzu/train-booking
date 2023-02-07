@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({setIsvisible}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,8 +22,9 @@ const Login = () => {
        
     } 
     console.log(LoginSuccess)
+    setIsvisible(true)
 
-    localStorage.setItem("currentagent", JSON.stringify(LoginSuccess.Username))
+    localStorage.setItem("currentagent", (LoginSuccess.Username))
 
 
 
@@ -42,7 +43,7 @@ const Login = () => {
     <>
       <div className="agent-login-main-container">
         <div className="agent-login-sub-container">
-          <h1 className="login-heading">Login</h1>
+          <h2 className="login-heading">Login</h2>
           <form onSubmit={onSubmitLogin} className="agent-login-form">
             <input
               value={email}

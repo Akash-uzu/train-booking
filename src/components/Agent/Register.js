@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import "./Register.css";
-const Register = () => {
+const Register = ({setIsvisible}) => {
   const navigate = useNavigate();
   const [image, setImage] = useState();
   const [dob, setdob] = useState("");
@@ -10,12 +10,12 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
 
-  const onSubmitLogin = (e) => {
+  const onSubmitregis = (e) => {
     e.preventDefault();
 
     //validation
 
-    if ( dob && phone && address) {
+    if ( image && dob && phone && address) {
       if (phone.length < 10) {
         setError("Invalid phone number");
         return;
@@ -34,24 +34,26 @@ const Register = () => {
           user.isRegistered = true;
         }
       });
-
+      setIsvisible(true)
+      localStorage.setItem("registeredAgents",JSON.stringify(registeredAgents))
       localStorage.setItem("data", JSON.stringify(data));
       navigate("/booking");
     } else {
+      setError("Enter valid Details");
       return;
     }
   };
 
   return (
-    <div className="agent-login-main-container">
-      <div className="agent-login-sub-container">
-        <h2 className="login-heading">One Time Registration</h2>
-        <form onSubmit={onSubmitLogin} className="agent-login-form">
+    <div className="agent-regis-main-container">
+      <div className="agent-regis-sub-container">
+        <h2 className="regis-heading">One Time Registration</h2>
+        <form onSubmit={onSubmitregis} className="agent-regis-form">
           <h3>image</h3>
           <input
             onChange={(e) => setImage(e.target.files[0])}
             placeholder="Choose File"
-            className="agent-login-input"
+            className="agent-regis-input"
             type="file"
           />
 
@@ -60,7 +62,7 @@ const Register = () => {
             value={dob}
             onChange={(e) => setdob(e.target.value)}
             placeholder="date of birth"
-            className="agent-login-input"
+            className="agent-regis-input"
             type="date"
           />
           <h3>Phone Number</h3>
@@ -68,7 +70,7 @@ const Register = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Phone number"
-            className="agent-login-input"
+            className="agent-regis-input"
             type="number"
           />
           <h3>addresss </h3>
@@ -76,11 +78,11 @@ const Register = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Address"
-            className="agent-login-input"
+            className="agent-regis-input"
             type="text"
           />
 
-          <button className="login-btn" type="submit">
+          <button className="regis-btn" type="submit">
             Register
           </button>
           {error && <p className="err">{error}</p>}

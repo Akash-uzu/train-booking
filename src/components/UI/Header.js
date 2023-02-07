@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import "./Header.css"
 import { useState } from 'react'
-const Header = () => {
+const Header = ({isVisible}) => {
   
-  const agent = localStorage.getItem(JSON.stringify("currentagent"))
-  const [hide,setHide]  = useState(false)
+  const agent = localStorage.getItem(("currentagent"))
   // useEffect(()=>{// have to fix
   //   //let path = (window.location.href)//
   //   if(window.location.href==="/"){
@@ -24,7 +23,7 @@ const Header = () => {
     <div className='header'>
         <h5>Welcome {agent}</h5>
         <h5>Railways.com</h5>
-        <button onClick={logoutHandler}>Logout</button>
+        {isVisible && <button onClick={logoutHandler}>Logout</button>}
     </div>
   )
 }

@@ -4,10 +4,10 @@
     height: 60px;
     color: white;
     align-items: center;
-    text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     display: flex;
     justify-content: space-around;
+    margin-right: 30px;
 }
 .header button{
     height: 45px;
@@ -15,4 +15,13 @@
 }
 .header button:hover {
     background-color: #2d0650;
+}
+@media only screen and (max-width: 600px) {
+    .header{
+   
+        font-size: 18px;
+        justify-content: space-around;
+        margin-left: -20px;
+    }
+
 }

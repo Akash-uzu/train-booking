@@ -21,7 +21,7 @@ const RenderSeats = ({render}) => {
             backgroundColor: render[i].status ==='booked' ? "lightgreen" : "white"
           }}
       >
-        {render[i].age }{i+1}
+        {i+1}
       </div>);
   }
 

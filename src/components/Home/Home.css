@@ -37,9 +37,16 @@ button:hover{
     background-color: #402955;
 }
 .wrapper{
-    height: 50%;
+    height: 100%;
     width: 50%;
 }
 img{
-    height: 300px;
+    max-height: 300px;
+}
+@media only screen and (max-width: 600px) {
+    .wrapper{
+        height: 100%;
+        width: 100%;
+    }
+
 }

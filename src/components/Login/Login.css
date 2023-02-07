@@ -1,19 +1,20 @@
 .agent-login-main-container {
-    height: 80vh;
-    margin-top:100px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: auto;
+    margin-right: 12%;
   }
   .agent-login-sub-container {
-    margin-top:100px;
+    margin-top: 10%;
+    margin-left: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: auto;
+    width: 30%;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
@@ -43,18 +44,35 @@
   }
   .login-btn {
     width: 90px;
-    height: 60px;
+    height: 50px;
     border: none;
     border-radius: 6px;
     color: #fff;
     background-color: #674188;
     margin-top: 12px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 12px;
   }
   .err {
     font-family: "Courier New";
     font-weight: bold;
     color: rgb(253, 15, 15);
     font-size: 14px;
+  }
+  @media only screen and (max-width: 600px) {
+    .agent-login-sub-container {
+      margin-top: 20%;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-right: 40px;
+      
+    }
+    .agent-login-main-container {
+      height: 100%;
+      width: auto;
+    
+    }
+    
+    
   }

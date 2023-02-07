@@ -1,11 +1,11 @@
-.agent-login-main-container {
+.agent-regis-main-container {
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .agent-login-sub-container {
+  .agent-regis-sub-container {
     margin-top: -1px;
     display: flex;
     flex-direction: column;
@@ -19,19 +19,19 @@
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   }
   
-  .login-heading {
+  .regis-heading {
     font-family: "Lucida Sans Unicode";
     font-weight: 700;
     color: rgb(68, 14, 70);
   }
-  .agent-login-form {
+  .agent-regis-form {
     display: flex;
     width: 45%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .agent-login-input {
+  .agent-regis-input {
     width: 100%;
     margin: 5px;
     padding: 3px;
@@ -40,7 +40,7 @@
     border: 1px solid rgb(146, 153, 158);
     border-radius: 6px;
   }
-  .login-btn {
+  .regis-btn {
     width: 90px;
     height: 60px;
     border: none;
