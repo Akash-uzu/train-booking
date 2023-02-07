@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import "./Header.css"
-import { useState } from 'react'
-const Header = ({isVisible}) => {
+const Header = () => {
   
   const agent = localStorage.getItem(("currentagent"))
   // useEffect(()=>{// have to fix
@@ -23,7 +22,7 @@ const Header = ({isVisible}) => {
     <div className='header'>
         <h5>Welcome {agent}</h5>
         <h5>Railways.com</h5>
-        {isVisible && <button onClick={logoutHandler}>Logout</button>}
+       <button onClick={logoutHandler}>Logout</button>
     </div>
   )
 }

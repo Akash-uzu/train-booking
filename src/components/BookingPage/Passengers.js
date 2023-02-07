@@ -4,7 +4,6 @@ import RenderSeats from "./SeatsMatrix";
 import "./Passengers.css";
 
 const Passenger = () => {
-  const bookedAgent = localStorage.getItem("currentagent");
   const passengerData = JSON.parse(localStorage.getItem("passengerData"));
   const totalseats = JSON.parse(localStorage.getItem("totalseats"));
   const [render,setRender] = useState(JSON.parse(localStorage.getItem("seatsData")) || [])
@@ -61,6 +60,17 @@ const Passenger = () => {
               middleSeat.pname = passenger.pname;
               middleSeat.status = "booked";
               middleSeat.bookedBy = passenger;
+            }else{
+              const aisle = seatsData.find(function (seat) {
+                return seat.type === "aisle" && seat.status === "available";
+              });
+              if (aisle) {
+                aisle.pname = passenger.pname;
+                aisle.status = "booked";
+                aisle.bookedBy = passenger;
+              } else{
+                alert("No seats Available")
+              }
             }
           }
         } else {
@@ -82,6 +92,17 @@ const Passenger = () => {
               middleSeat.pname = passenger.pname;
               middleSeat.status = "booked";
               middleSeat.bookedBy = passenger;
+            }else{
+              const aisle = seatsData.find(function (seat) {
+                return seat.type === "aisle" && seat.status === "available";
+              });
+              if (aisle) {
+                aisle.pname = passenger.pname;
+                aisle.status = "booked";
+                aisle.bookedBy = passenger;
+              } else{
+                alert("No seats Available")
+              }
             }
           }
         }

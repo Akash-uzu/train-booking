@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import "./Register.css";
-const Register = ({setIsvisible}) => {
+const Register = () => {
   const navigate = useNavigate();
   const [image, setImage] = useState();
   const [dob, setdob] = useState("");
@@ -20,7 +20,7 @@ const Register = ({setIsvisible}) => {
         setError("Invalid phone number");
         return;
       }
-      const currentAgent = JSON.parse(localStorage.getItem("currentagent"));
+      const currentAgent = localStorage.getItem("currentagent");
       let data = JSON.parse(localStorage.getItem("data"));
       let registeredAgents =
         JSON.parse(localStorage.getItem("registeredAgents")) || [];
@@ -34,7 +34,6 @@ const Register = ({setIsvisible}) => {
           user.isRegistered = true;
         }
       });
-      setIsvisible(true)
       localStorage.setItem("registeredAgents",JSON.stringify(registeredAgents))
       localStorage.setItem("data", JSON.stringify(data));
       navigate("/booking");

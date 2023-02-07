@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({setIsvisible}) => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +22,6 @@ const Login = ({setIsvisible}) => {
        
     } 
     console.log(LoginSuccess)
-    setIsvisible(true)
 
     localStorage.setItem("currentagent", (LoginSuccess.Username))
 

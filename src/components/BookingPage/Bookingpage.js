@@ -12,7 +12,7 @@ const Bookingpage = () => {
   const a = parseInt(compartments) * 6;
   const [passengers, setPassengers] = useState([]);
   const [counter, setCounter] = useState(0);
-  const bookedAgent = JSON.parse(localStorage.getItem("currentagent"));
+  const bookedAgent = (localStorage.getItem("currentagent"));
 
   localStorage.setItem("totalseats", JSON.stringify(a)); /// pass it to seat rendering component
 
